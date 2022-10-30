@@ -42,7 +42,7 @@ function onMIDIMessage(message) {
 
 
 function draw() {
-  if (note == 44, 10) {
+  if (note == 44 || 10) {
     fill(vel*2, vel, 200,)
     ellipse(200, 200, vel, 200)
   }
