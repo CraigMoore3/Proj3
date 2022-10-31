@@ -1,9 +1,12 @@
 // Source: https://jsfiddle.net/KeithMcMillenInstruments/zma6pzt9
 var midi, data;
 var note, vel;
+let canvasWidth = 1600;
+let canvasHeight = 900;
+ellipseMode(CENTER)
 
 function setup() {
-  createCanvas(1600,900);
+  createCanvas(canvasWidth,canvasHeight);
   // request MIDI access
   if (navigator.requestMIDIAccess) {
       navigator.requestMIDIAccess({
@@ -42,13 +45,13 @@ function onMIDIMessage(message) {
 
 
 function draw() {
-  if (note == 44 || 10) {
-    fill(vel*2, vel, 200,)
-    ellipse(200, 200, vel, 200)
+  if (note == 44) {
+    fill(vel*2, vel, 200, 2)
+    ellipse(200, frameCount/2, frameCount/3, vel)
   }
   if (note == 38) {
-  fill(note, vel*2, vel*3,)
-  rect(40,0,vel*5,vel*5);
+  fill(note, vel*2, vel*3, 2)
+  rect(frameCount/2,0,vel*5,vel*5);
   }
 }
 
@@ -71,4 +74,12 @@ function draw() {
 //         return vel;
 //     }
 //     else 
+// }
+
+// function testfunct () {
+//   if (note == 43){
+//     fill(vel*2, vel, 200,)
+//     ellipse(200, 200, 50, vel)
+//     }
+//   else {}
 // }
