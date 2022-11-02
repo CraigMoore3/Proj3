@@ -1,13 +1,18 @@
 // Source: https://jsfiddle.net/KeithMcMillenInstruments/zma6pzt9
 var midi, data;
 var note, vel;
-let canvasWidth = 1600;
+let canvasWidth = 900;
 let canvasHeight = 900;
-
-
+let x = 0;
+let speed = 3;
+let speed2 = 1;
+let y = 0;
+let deg = 0;
+let d1 = 1;
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
+  background(0)
 
   ellipseMode(CENTER);
   rectMode(CENTER);
@@ -52,27 +57,86 @@ function onMIDIMessage(message) {
 
 function draw() {
 
+// Pads 1-4, velocity sensative rectangles
+
+  if (note == 36) {
+    fill(vel*2, vel, 200, 2);
+    y += speed2;
+    ellipse(200, y, frameCount/3, vel)
+  }
+
+  if (y > height || y < 0) {
+    speed2 *= -1;
+  }
+
   if (note == 44) {
-    fill(vel*2, vel, 200, 2)
-    ellipse(200, frameCount/2, frameCount/3, vel)
+    fill(150, vel*4, vel*2, 5);
+    x += speed;
+    rect(x, 100, vel, vel*3);
   }
 
   if (note == 45) {
-    fill(150, vel*4, vel*2, 5);
-    rotate(frameCount/4);
-    rect(canvasWidth/2, 300, vel, vel*3);
+    fill(vel*4, 255, vel, 8);
+    x += speed;
+    rect(x, 400, vel, vel*3);
+  }
+
+  if (note == 46) {
+    fill(226, vel, 30, 8);
+    x += speed;
+    rect(x, 600, vel, vel*3);
+  }
+
+  if (note == 47) {
+    fill(160, 32, 226, 6)
+    x += speed; 
+    rect(x, 800, vel, vel*3)
+  }
+
+  if (x > width || x < 0) {
+    speed *= -1;
   }
 
 
-  
-//   if (note == ) {
 
-// }
+  // Pads 5-8, Spinning Rectangle
 
-  if (note == 38) {
-  fill(note, vel*2, vel*3, 2)
-  rect(frameCount/2,0,vel*5,vel*5);
+  if (note == 48) {
+    fill (200, 50, 25);
+    push();
+    translate(width/2, height/2);
+    rotate(deg++);
+    rect(0,0,15,400);
+    pop();
   }
+
+  if (note == 49) {
+    fill (25, 50, 200);
+    push();
+    translate(width/2, height/2);
+    rotate(deg++);
+    rect(0,0,15,400);
+    pop();
+  }
+
+  if (note == 50) {
+    fill ( 255, 255, 255);
+    push();
+    translate(width/2, height/2);
+    rotate(deg++);
+    rect(0,0,15,400);
+    pop(); 
+  }
+
+  if (note == 51) {
+    fill (25, 200, 25);
+    push();
+    translate(width/2, height/2);
+    rotate(deg++);
+    rect(0,0,15,400);
+    pop(); 
+  }
+
 }
 
 // Knob Note Values ( 0 - 127 )
