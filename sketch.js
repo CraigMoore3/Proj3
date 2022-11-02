@@ -12,7 +12,8 @@ let d1 = 1;
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
-  background(0)
+  background(0);
+  stroke(200);
 
   ellipseMode(CENTER);
   rectMode(CENTER);
@@ -59,12 +60,6 @@ function draw() {
 
 // Pads 1-4, velocity sensative rectangles
 
-  if (note == 36) {
-    fill(vel*2, vel, 200, 2);
-    y += speed2;
-    ellipse(200, y, frameCount/3, vel)
-  }
-
   if (y > height || y < 0) {
     speed2 *= -1;
   }
@@ -102,16 +97,16 @@ function draw() {
   // Pads 5-8, Spinning Rectangle
 
   if (note == 48) {
-    fill (200, 50, 25);
+    fill (100, 8, 25);
     push();
     translate(width/2, height/2);
-    rotate(deg++);
+    rotate(deg--);
     rect(0,0,15,400);
     pop();
   }
 
   if (note == 49) {
-    fill (25, 50, 200);
+    fill (25, 50, 175);
     push();
     translate(width/2, height/2);
     rotate(deg++);
@@ -123,18 +118,62 @@ function draw() {
     fill ( 255, 255, 255);
     push();
     translate(width/2, height/2);
-    rotate(deg++);
+    rotate(deg--);
     rect(0,0,15,400);
     pop(); 
   }
 
   if (note == 51) {
-    fill (25, 200, 25);
+    fill (25, 100, 25);
     push();
     translate(width/2, height/2);
     rotate(deg++);
     rect(0,0,15,400);
     pop(); 
+  }
+
+
+
+  // Pads 9-12,
+
+  if (note == 36) {
+    fill(vel*2, vel, 200, 2);
+    y += speed2;
+    ellipse(200, y, frameCount/3, vel)
+  }
+
+  if (note == 37){
+    fill(255);
+    rect(x++, y++, 15, 200);
+
+  }
+
+  if (note == 38){
+
+  }
+
+  if (note == 39){
+
+  }
+
+
+
+  //  Pads 13-16
+
+  if (note == 40) {
+
+  }
+
+  if (note == 41) {
+
+  }
+
+  if (note == 42) {
+
+  }
+
+  if (note == 43) {
+
   }
 
 }
