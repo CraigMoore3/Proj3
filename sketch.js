@@ -58,6 +58,7 @@ function onMIDIMessage(message) {
     // vel = data[2];
     // if (data[1] == 74) cc74value = data[2];
 
+    // switch example
     switch (data[1]) {
       case 74:
         cc74value = data[2];
