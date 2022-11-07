@@ -57,11 +57,11 @@ function onMIDIMessage(message) {
 
 
 function draw() {
-
-  if (note == 10) {
-    fill(vel*2);
-    rect(450, 450, 900, 900);
-  }
+  // Test for using knob as background selector
+  // if (note == 10) {
+  //   fill(vel*2);
+  //   rect(450, 450, 900, 900);
+  // }
 
 
 // Pads 1-4, velocity sensative rectangles
