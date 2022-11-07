@@ -10,6 +10,8 @@ let y = 0;
 let deg = 0;
 let d1 = 1;
 let xx = x *= -1;
+let k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, k10, k11, k12, k13, k14, k15, k16 = 0;
+
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
@@ -19,6 +21,7 @@ function setup() {
   ellipseMode(CENTER);
   rectMode(CENTER);
   angleMode(DEGREES);
+
 
   // request MIDI access
   if (navigator.requestMIDIAccess) {
@@ -54,10 +57,55 @@ function onMIDIMessage(message) {
     note = data[1];
     vel = data[2];
 
+    switch (data[1]) {
+      case 7:
+        k0 = data [2];
+      case 10:
+        k1 = data [2];
+        break;
+      case 74:
+        k2 = data [2];
+      case 71:
+        k3 = data [2]; 
+      case 76:
+        k4 = data [2];
+      case 77:
+        k5 = data [2];
+      case 93:
+        k6 = data [2];
+      case 73:
+        k7 = data [2];
+      case 75:
+        k8 = data [2];
+      case 114:
+        k9 = data [2];
+      case 18:
+        k10 = data [2];
+      case 19:
+        k11 = data [2];
+      case 16:
+        k12 = data [2];
+      case 17:
+        k13 = data [2];
+      case 91:
+        k14 = data [2];
+      case 79:
+        k15 = data [2];
+      case 72:
+        k16 = data [2];
+      default:
+        note = data[1];
+        vel = data[2];
+        break;
+    }
+
 }
 
 
 function draw() {
+
+
+
   // Test for using knob as background selector
   // if (note == 10) {
   //   fill(vel*2);
@@ -155,8 +203,8 @@ function draw() {
   // Pad 9
   if (note == 36) {
     fill(vel*2, vel, 200, 25);
-    y += speed2;
-    ellipse(200, y, 100, vel)
+    // y += speed2;
+    ellipse(200, k9*6, 100, vel)
   }
 
   // Pad 10
