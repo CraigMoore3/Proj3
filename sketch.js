@@ -12,7 +12,7 @@ let d1 = 1;
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
-  // background(0);
+  background(0);
   stroke(200);
 
   ellipseMode(CENTER);
@@ -103,7 +103,7 @@ function draw() {
   // Pads 5-8, Spinning Rectangle
 
   if (note == 48) {
-    fill (50);
+    fill (0,0,0,1);
     push();
     translate(width/2, height/2);
     rotate(deg--);
@@ -112,7 +112,7 @@ function draw() {
   }
 
   if (note == 49) {
-    fill (100);
+    fill (100, 10, 222, 5);
     push();
     translate(width/2, height/2);
     rotate(deg++);
@@ -121,7 +121,7 @@ function draw() {
   }
 
   if (note == 50) {
-    fill (150);
+    fill (150, 20, 200,20);
     push();
     translate(width/2, height/2);
     rotate(deg--);
@@ -134,7 +134,7 @@ function draw() {
     push();
     translate(width/2, height/2);
     rotate(deg++);
-    rect(50,vel,15,400);
+    rect(0,vel,15,400);
     pop(); 
   }
 
@@ -143,9 +143,9 @@ function draw() {
   // Pads 9-12,
 
   if (note == 36) {
-    fill(vel*2, vel, 200, 2);
+    fill(vel*2, vel, 200, 25);
     y += speed2;
-    ellipse(200, y, frameCount/3, vel)
+    ellipse(200, y, 100, vel)
   }
 
   if (note == 37){
