@@ -11,6 +11,10 @@ let deg = 0;
 let d1 = 1;
 let xx = x *= -1;
 let k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, k10, k11, k12, k13, k14, k15, k16 = 0;
+// let a = random(0,950);
+// let b = random(0,950);
+// let c = random(0,100);
+// let d = random(0,100);
 
 
 function setup() {
@@ -230,7 +234,13 @@ function draw() {
   //  Pads 13-16
 
   // Pad 13
+let a = random(0,950);
+let b = random(0,950);
+let c = random(0,100);
+let d = random(0,100);
   if (note == 40) {
+    fill(255);
+    rect(a,b,c,d);
 
   }
 
