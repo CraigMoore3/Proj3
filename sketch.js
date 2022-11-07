@@ -11,6 +11,7 @@ let deg = 0;
 let d1 = 1;
 let xx = x *= -1;
 let hasMIDIDevices = false;
+let cc74value = 0;
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
@@ -53,8 +54,21 @@ function onMIDIFailure(error) {
 function onMIDIMessage(message) {
     data = message.data; // this gives us our [command/channel, note, velocity] data.
     console.log('MIDI data', data); // MIDI data [144, 63, 73]
-    note = data[1];
-    vel = data[2];
+    // note = data[1];
+    // vel = data[2];
+    // if (data[1] == 74) cc74value = data[2];
+
+    switch (data[1]) {
+      case 74:
+        cc74value = data[2];
+        break;
+      case 75:
+        cc75value = data[2];
+      default:
+        note = data[1];
+        vel = data[2];
+        break;
+    }
 
 }
 
@@ -104,7 +118,7 @@ function draw() {
   if (note == 47) {
     fill(160, 32, 226, 6)
     x += speed; 
-    rect(x, 800, vel, vel*3)
+    rect(x, cc74value, vel, vel*3)
   }
 
   if (x > width || x < 0) {
