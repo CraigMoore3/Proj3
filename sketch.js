@@ -12,7 +12,7 @@ let d1 = 1;
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
-  background(0);
+  // background(0);
   stroke(200);
 
   ellipseMode(CENTER);
@@ -58,6 +58,12 @@ function onMIDIMessage(message) {
 
 function draw() {
 
+  if (note == 10) {
+    fill(vel*2);
+    rect(450, 450, 900, 900);
+  }
+
+
 // Pads 1-4, velocity sensative rectangles
 
   if (y > height || y < 0) {
@@ -97,38 +103,38 @@ function draw() {
   // Pads 5-8, Spinning Rectangle
 
   if (note == 48) {
-    fill (100, 8, 25);
+    fill (50);
     push();
     translate(width/2, height/2);
     rotate(deg--);
-    rect(0,0,15,400);
+    rect(vel,0,15,400);
     pop();
   }
 
   if (note == 49) {
-    fill (25, 50, 175);
+    fill (100);
     push();
     translate(width/2, height/2);
     rotate(deg++);
-    rect(0,0,15,400);
+    rect(0,vel*2,15,400);
     pop();
   }
 
   if (note == 50) {
-    fill ( 255, 255, 255);
+    fill (150);
     push();
     translate(width/2, height/2);
     rotate(deg--);
-    rect(0,0,15,400);
+    rect(vel/2,50,15,400);
     pop(); 
   }
 
   if (note == 51) {
-    fill (25, 100, 25);
+    fill (200);
     push();
     translate(width/2, height/2);
     rotate(deg++);
-    rect(0,0,15,400);
+    rect(50,vel,15,400);
     pop(); 
   }
 
