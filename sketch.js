@@ -10,6 +10,7 @@ let y = 0;
 let deg = 0;
 let d1 = 1;
 let xx = x *= -1;
+let hasMIDIDevices = false;
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
@@ -36,6 +37,7 @@ function onMIDISuccess(midiAccess) {
     midi = midiAccess; // this is our raw MIDI data, inputs, outputs, and sysex status
 
     var inputs = midi.inputs.values();
+    if (inputs.value != undefined) hasMIDIDevices = true;
     // loop over all available inputs and listen for any MIDI input
     for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
         // each time there is a midi message call the onMIDIMessage function
@@ -63,7 +65,12 @@ function draw() {
   //   fill(vel*2);
   //   rect(450, 450, 900, 900);
   // }
-
+  fill("white");
+  if (! hasMIDIDevices) { 
+    console.log("No MIDI Devices");
+    text("No MIDI Devices",34,50);
+    noLoop();
+  }
 
 // Pads 1-4, velocity sensative rectangles
 
