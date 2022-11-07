@@ -9,6 +9,7 @@ let speed2 = 1;
 let y = 0;
 let deg = 0;
 let d1 = 1;
+let xx = x *= -1;
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
@@ -70,24 +71,29 @@ function draw() {
     speed2 *= -1;
   }
 
+
+  // Pad 1
   if (note == 44) {
     fill(150, vel*4, vel*2, 5);
     x += speed;
     rect(x, 100, vel, vel*3);
   }
 
+  // Pad 2
   if (note == 45) {
     fill(vel*4, 255, vel, 8);
     x += speed;
     rect(x, 400, vel, vel*3);
   }
 
+  // Pad 3
   if (note == 46) {
     fill(226, vel, 30, 8);
     x += speed;
     rect(x, 600, vel, vel*3);
   }
 
+  // Pad 4
   if (note == 47) {
     fill(160, 32, 226, 6)
     x += speed; 
@@ -102,6 +108,7 @@ function draw() {
 
   // Pads 5-8, Spinning Rectangle
 
+  // Pad 5
   if (note == 48) {
     fill (0,0,0,1);
     push();
@@ -111,6 +118,7 @@ function draw() {
     pop();
   }
 
+  // Pad 6
   if (note == 49) {
     fill (100, 10, 222, 5);
     push();
@@ -120,6 +128,7 @@ function draw() {
     pop();
   }
 
+  // Pad 7
   if (note == 50) {
     fill (150, 20, 200,20);
     push();
@@ -129,6 +138,7 @@ function draw() {
     pop(); 
   }
 
+  // Pad 8
   if (note == 51) {
     fill (200);
     push();
@@ -142,22 +152,27 @@ function draw() {
 
   // Pads 9-12,
 
+  // Pad 9
   if (note == 36) {
     fill(vel*2, vel, 200, 25);
     y += speed2;
     ellipse(200, y, 100, vel)
   }
 
+  // Pad 10
   if (note == 37){
     fill(255);
-    rect(x++, y++, 15, 200);
+    rect(x++, vel*6, 15, 200);
 
   }
 
+  // Pad 11
   if (note == 38){
-
+    fill(250,100,10, 50);
+    rect(x++, vel *6, 15,200)
   }
 
+  // Pad 12
   if (note == 39){
 
   }
@@ -166,18 +181,22 @@ function draw() {
 
   //  Pads 13-16
 
+  // Pad 13
   if (note == 40) {
 
   }
 
+  // Pad 14
   if (note == 41) {
 
   }
 
+  // Pad 15
   if (note == 42) {
 
   }
 
+  // Pad 16
   if (note == 43) {
 
   }
