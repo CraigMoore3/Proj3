@@ -1,20 +1,22 @@
-// Source: https://jsfiddle.net/KeithMcMillenInstruments/zma6pzt9
+// Web Midi Implementation Source: https://jsfiddle.net/KeithMcMillenInstruments/zma6pzt9
+
 var midi, data;
 var note, vel;
+
 let canvasWidth = 900;
 let canvasHeight = 900;
+
 let x = 0;
+let y = 0;
+let d1 = 1;
+
 let speed = 3;
 let speed2 = 1;
-let y = 0;
 let deg = 0;
-let d1 = 1;
-let xx = x *= -1;
+
+// Knob Variables
 let k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, k10, k11, k12, k13, k14, k15, k16 = 0;
-// let a = random(0,950);
-// let b = random(0,950);
-// let c = random(0,100);
-// let d = random(0,100);
+
 
 
 function setup() {
@@ -40,7 +42,7 @@ function setup() {
 // midi functions
 function onMIDISuccess(midiAccess) {
     // when we get a succesful response, run this code
-    midi = midiAccess; // this is our raw MIDI data, inputs, outputs, and sysex status
+    midi = midiAccess; // Raw MIDI data, inputs, outputs, and sysex status
 
     var inputs = midi.inputs.values();
     // loop over all available inputs and listen for any MIDI input
@@ -56,11 +58,12 @@ function onMIDIFailure(error) {
 }
 
 function onMIDIMessage(message) {
-    data = message.data; // this gives us our [command/channel, note, velocity] data.
+    data = message.data; // [command/channel, note, velocity]
     console.log('MIDI data', data); // MIDI data [144, 63, 73]
     note = data[1];
     vel = data[2];
 
+    // Switch function for knobs
     switch (data[1]) {
       case 7:
         k0 = data [2];
@@ -108,21 +111,11 @@ function onMIDIMessage(message) {
 
 function draw() {
 
-
-
-  // Test for using knob as background selector
-  // if (note == 10) {
-  //   fill(vel*2);
-  //   rect(450, 450, 900, 900);
-  // }
-
-
 // Pads 1-4, velocity sensative rectangles
 
   if (y > height || y < 0) {
     speed2 *= -1;
   }
-
 
   // Pad 1
   if (note == 44) {
@@ -155,7 +148,6 @@ function draw() {
   if (x > width || x < 0) {
     speed *= -1;
   }
-
 
 
   // Pads 5-8, Spinning Rectangle
@@ -273,4 +265,3 @@ let d = random(0,100);
 // 5 = 48   6 = 49   7 = 50   8 = 51 
 // 9 = 36   10 = 37   11 = 38   12 = 39
 // 13 = 40   14 = 41   15 = 42   16 = 43
-
