@@ -15,8 +15,11 @@ let speed2 = 1;
 let deg = 0;
 
 // Knob Variables
-let k0, k1, k2, k3, k4, k5, k6, k7, k8, k11, k12, k13, k14, k15, k16 = 0;
-let k9,k10 = 50
+let k0, k1, k2, k3, k4, k5, k6, k7, k8, k13, k14, k15, k16 = 0;
+let k9 = 20
+let k10 = 100
+let k11 = 50;
+let k12 = 100;
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
@@ -110,149 +113,156 @@ function onMIDIMessage(message) {
 
 function draw() {
 
-  let a = random(0,950);
-  let b = random(0,950);
-  let c = random(0,100);
-  let d = random(0,100);
-  let e = random(200,400);
+    let a = random(0,950);
+    let b = random(0,950);
+    let c = random(0,100);
+    let d = random(0,100);
+    let e = random(200,400);
 
-// Pads 1-4, velocity sensative rectangles
+  // Pads 1-4, velocity sensative rectangles
 
-  if (y > height || y < 0) {
-    speed2 *= -1;
-  }
+    if (y > height || y < 0) {
+      speed2 *= -1;
+    }
 
-  // Pad 1
-  if (note == 44) {
-    fill(150, vel*4, vel*2, 5);
-    x += speed;
-    rect(x, 100, vel, vel*3);
-  }
+    // Pad 1 Top Quadrent Blue
+    if (note == 44) {
+      fill(150, vel*4, vel*2, 5);
+      x += speed;
+      rect(x, 100, vel, vel*3);
+    }
 
-  // Pad 2
-  if (note == 45) {
-    fill(vel*4, 255, vel, 8);
-    x += speed;
-    rect(x, 400, vel, vel*3);
-  }
+    // Pad 2 Second Quadrent Yellow
+    if (note == 45) {
+      fill(vel*4, 255, vel, 8);
+      x += speed;
+      rect(x, 400, vel, vel*3);
+    }
 
-  // Pad 3
-  if (note == 46) {
-    fill(226, vel, 30, 8);
-    x += speed;
-    rect(x, 600, vel, vel*3);
-  }
+    // Pad 3  Third Quadrent Orange
+    if (note == 46) {
+      fill(226, vel, 30, 8);
+      x += speed;
+      rect(x, 600, vel, vel*3);
+    }
 
-  // Pad 4
-  if (note == 47) {
-    fill(160, 32, 226, 6)
-    x += speed; 
-    rect(x, 800, vel, vel*3)
-  }
+    // Pad 4 Fourth Quadrent Purplee
+    if (note == 47) {
+      fill(160, 32, 226, 6)
+      x += speed; 
+      rect(x, 800, vel, vel*3)
+    }
 
-  if (x > width || x < 0) {
-    speed *= -1;
-  }
-
-
-  // Pads 5-8, Spinning Rectangle
-
-  // Pad 5
-  if (note == 48) {
-    fill (0,0,0,1);
-    push();
-    translate(width/2, height/2);
-    rotate(deg--);
-    rect(vel,0,15,400);
-    pop();
-  }
-
-  // Pad 6
-  if (note == 49) {
-    fill (100, 10, 222, 5);
-    push();
-    translate(width/2, height/2);
-    rotate(deg++);
-    rect(0,vel*2,15,400);
-    pop();
-  }
-
-  // Pad 7
-  if (note == 50) {
-    fill (150, 20, 200,20);
-    push();
-    translate(width/2, height/2);
-    rotate(deg--);
-    rect(vel/2,50,15,400);
-    pop(); 
-  }
-
-  // Pad 8
-  if (note == 51) {
-    fill (150,150,250,5);
-    push();
-    translate(width/2, height/2);
-    rotate(deg++);
-    rect(0,vel,15,400);
-    pop(); 
-  }
+    if (x > width || x < 0) {
+      speed *= -1;
+    }
 
 
+    // Pads 5-8, Spinning Rectangle
 
-  // Pads 9-12
+    // Pad 5 Counter Clockwise Gray
+    if (note == 48) {
+      fill (0,0,0,1);
+      push();
+      translate(width/2, height/2);
+      rotate(deg--);
+      rect(vel,0,15,400);
+      pop();
+    }
 
-  // Pad 9
-  if (note == 36) {
-    fill(vel*2, vel, 200, 10);
-    ellipse(300, k9*6, 400, vel)
-  }
+    // Pad 6 Clockwise Purple
+    if (note == 49) {
+      fill (100, 10, 222, 5);
+      push();
+      translate(width/2, height/2);
+      rotate(deg++);
+      rect(0,vel*2,15,400);
+      pop();
+    }
 
-  // Pad 10
-  if (note == 37){
-    fill(200,20,vel*2,5)
-    rect(450, k10*7, 900, vel )
+    // Pad 7 Counter Clockwise Pink
+    if (note == 50) {
+      fill (150, 20, 200,20);
+      push();
+      translate(width/2, height/2);
+      rotate(deg--);
+      rect(vel/2,50,15,400);
+      pop(); 
+    }
 
-  }
-
-  // Pad 11
-  if (note == 38){
-    
-  }
-
-  // Pad 12
-  if (note == 39){
-    
-  }
+    // Pad 8 Clockwise Blue
+    if (note == 51) {
+      fill (150,150,250,5);
+      push();
+      translate(width/2, height/2);
+      rotate(deg++);
+      rect(0,vel,15,400);
+      pop(); 
+    }
 
 
 
-  //  Pads 13-16
+    // Pads 9-12 Draw
 
-  // Pad 13: Generative Shapes: Squares
-  if (note == 40) {
-    fill(255, 255, 255, 5);
-    rect(a,b,c,d);
-  }
+    // Pad 9 Circle
+    // Knob 9
+    if (note == 36) {
+      fill(vel*2, vel, 200, 10);
+      ellipse(300, k9*7, 400, vel)
+    }
 
-  // Pad 14: Generative Shapes: Ellipses
-  if (note == 41) {
-    fill(255,255,255, 5);
-    ellipse(a, b, c, d);
-  }
+    // Pad 10 Square 
+    // Knob 10
+    if (note == 37){
+      fill(vel, 20, vel*3, 10)
+      rect(vel*7, k10*7, 200, 200)
 
-  // Pad 15: Reset Background
-  if (note == 42) {
-    fill(0);
-    rect(450, 450, 900, 900);
-  }
+    }
 
-  // Pad 16: RGBA Background, Knobs 13-16
-  if (note == 43) {
-    fill(k13,k14,k15,k16);
-    rect(450, 450, 900, 900);
-  }
+    // Pad 11 Gradient Pink
+    // Knob 11
+    if (note == 38){
+      fill(200,20,vel*2,5)
+      rect(450, k11*7, 900, vel )
+    }
 
-}
+    // Pad 12 Gradient Blue 
+    // Knob 12
+    if (note == 39){
+      fill(50,20,vel*2,5)
+      rect(450, k12*7, 900, vel)
+    }
+
+
+
+    //  Pads 13-16
+
+    // Pad 13: Generative Shapes: Squares
+    if (note == 40) {
+      fill(255, 255, 255, 5);
+      rect(a,b,c,d);
+    }
+
+    // Pad 14: Generative Shapes: Ellipses
+    if (note == 41) {
+      fill(255,255,255, 5);
+      ellipse(a, b, c, d);
+    }
+
+    // Pad 15: Reset Background (black)
+    if (note == 42) {
+      fill(0);
+      rect(450, 450, 900, 900);
+    }
+
+    // Pad 16: RGBA Background, Knobs 13-16
+    if (note == 43) {
+      fill(k13,k14,k15,k16);
+      rect(450, 450, 900, 900);
+    }
+ }
+
+
 
 // Knob Note Values ( 0 - 127 )
 // 1 = 10, 2 = 74, 3 = 71, 4 = 76
