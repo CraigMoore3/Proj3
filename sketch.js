@@ -33,7 +33,7 @@ function setup() {
           sysex: false
       }).then(onMIDISuccess, onMIDIFailure);
   } else {
-      alert("No MIDI support in your browser.");
+      alert("No MIDI support in your browser. Try Chrome!");
   }
 }
 
@@ -214,7 +214,7 @@ function draw() {
   // Pad 10
   if (note == 37){
     fill(255);
-    rect(x++, vel*6, 15, 200);
+    rect(x++, k10*2, 15, vel*6 );
 
   }
 
@@ -239,14 +239,15 @@ let b = random(0,950);
 let c = random(0,100);
 let d = random(0,100);
   if (note == 40) {
-    fill(255);
+    fill(k13*2, 10, k13);
     rect(a,b,c,d);
 
   }
 
   // Pad 14
   if (note == 41) {
-
+    fill(k14, 10, k14*2);
+    ellipse(a, b, c, d);
   }
 
   // Pad 15
@@ -272,21 +273,4 @@ let d = random(0,100);
 // 5 = 48   6 = 49   7 = 50   8 = 51 
 // 9 = 36   10 = 37   11 = 38   12 = 39
 // 13 = 40   14 = 41   15 = 42   16 = 43
-
-
-// Need to work on this
-// function knobvelocity1() {
-//     if (note == 10){
-//         return vel;
-//     }
-//     else 
-// }
-
-// function testfunct () {
-//   if (note == 43){
-//     fill(vel*2, vel, 200,)
-//     ellipse(200, 200, 50, vel)
-//     }
-//   else {}
-// }
 
