@@ -15,9 +15,8 @@ let speed2 = 1;
 let deg = 0;
 
 // Knob Variables
-let k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, k10, k11, k12, k13, k14, k15, k16 = 0;
-
-
+let k0, k1, k2, k3, k4, k5, k6, k7, k8, k11, k12, k13, k14, k15, k16 = 0;
+let k9,k10 = 50
 
 function setup() {
   createCanvas(canvasWidth,canvasHeight);
@@ -111,6 +110,12 @@ function onMIDIMessage(message) {
 
 function draw() {
 
+  let a = random(0,950);
+  let b = random(0,950);
+  let c = random(0,100);
+  let d = random(0,100);
+  let e = random(200,400);
+
 // Pads 1-4, velocity sensative rectangles
 
   if (y > height || y < 0) {
@@ -184,7 +189,7 @@ function draw() {
 
   // Pad 8
   if (note == 51) {
-    fill (200);
+    fill (150,150,250,5);
     push();
     translate(width/2, height/2);
     rotate(deg++);
@@ -194,62 +199,57 @@ function draw() {
 
 
 
-  // Pads 9-12,
+  // Pads 9-12
 
   // Pad 9
   if (note == 36) {
-    fill(vel*2, vel, 200, 25);
-    // y += speed2;
-    ellipse(200, k9*6, 100, vel)
+    fill(vel*2, vel, 200, 10);
+    ellipse(300, k9*6, 400, vel)
   }
 
   // Pad 10
   if (note == 37){
-    fill(255);
-    rect(x++, k10*2, 15, vel*6 );
+    fill(200,20,vel*2,5)
+    rect(450, k10*7, 900, vel )
 
   }
 
   // Pad 11
   if (note == 38){
-    fill(250,100,10, 50);
-    rect(x++, vel *6, 15,200)
+    
   }
 
   // Pad 12
   if (note == 39){
-
+    
   }
 
 
 
   //  Pads 13-16
 
-  // Pad 13
-let a = random(0,950);
-let b = random(0,950);
-let c = random(0,100);
-let d = random(0,100);
+  // Pad 13: Generative Shapes: Squares
   if (note == 40) {
-    fill(k13*2, 10, k13);
+    fill(255, 255, 255, 5);
     rect(a,b,c,d);
-
   }
 
-  // Pad 14
+  // Pad 14: Generative Shapes: Ellipses
   if (note == 41) {
-    fill(k14, 10, k14*2);
+    fill(255,255,255, 5);
     ellipse(a, b, c, d);
   }
 
-  // Pad 15
+  // Pad 15: Reset Background
   if (note == 42) {
-
+    fill(0);
+    rect(450, 450, 900, 900);
   }
 
-  // Pad 16
+  // Pad 16: RGBA Background, Knobs 13-16
   if (note == 43) {
-
+    fill(k13,k14,k15,k16);
+    rect(450, 450, 900, 900);
   }
 
 }
